@@ -1,0 +1,5 @@
+.idea/
+vendor/
+bin/behat
+bin/behat.bat
+composer.lock

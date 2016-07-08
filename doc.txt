@@ -1,0 +1,2 @@
+bin\behat --init
+bin\behat --dry-run --append-snippets
