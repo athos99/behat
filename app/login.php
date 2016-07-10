@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__.'/../library/Account.php';
+require 'Account.php';
 if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
     header("Location: index.php");
     exit;
@@ -9,7 +9,7 @@ if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
 if (filter_has_var(INPUT_POST, 'username')) {
     $_SESSION['username'] = filter_input(INPUT_POST, 'username');
     $_SESSION['loggedIn'] = true;
-    $_SESSION['account'] = new MyApp\Account;
+    $_SESSION['account'] = new Account;
     header("Location: index.php");
     exit;
 }

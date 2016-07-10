@@ -1,0 +1,26 @@
+default:
+    suites:
+        default:
+            core_features:
+                context:
+                  - web
+                paths:
+                    - %paths.base%/features/web
+                filters:
+                      tags: '@web'
+    extensions:
+        Behat\MinkExtension:
+            base_url: http://localhost/behat/app
+            sessions:
+                default:
+                    goutte: ~
+unit:
+    suites:
+        default:
+            context:
+              - unit
+            core_features:
+                paths:
+                    - %paths.base%/features/unit
+                filters:
+                      tags: '@web'

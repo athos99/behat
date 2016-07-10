@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../library/Account.php';
+require 'Account.php';
 session_start();
 if (!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
     header("Location: login.php");

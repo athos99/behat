@@ -3,3 +3,4 @@ vendor/
 bin/behat
 bin/behat.bat
 composer.lock
+bin/

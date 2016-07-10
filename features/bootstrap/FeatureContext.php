@@ -1,18 +1,21 @@
 <?php
+
+
+use Behat\Behat\Tester\Exception\PendingException;
+use Behat\Gherkin\Node\PyStringNode;
+use Behat\Gherkin\Node\TableNode;
+use Behat\MinkExtension\Context\MinkContext;
+use Behat\Behat\Context\SnippetAcceptingContext;
+
+
 require_once __DIR__.'/../../vendor/autoload.php';
 require_once __DIR__.'/../../app/Account.php';
 
 
-use Behat\Behat\Tester\Exception\PendingException;
-use Behat\Behat\Context\Context;
-use Behat\Behat\Context\SnippetAcceptingContext;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
-
 /**
  * Defines application features from the specific context.
  */
-class FeatureContext implements Context, SnippetAcceptingContext
+class FeatureContext extends MinkContext implements SnippetAcceptingContext
 {
 
 
@@ -44,7 +47,8 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function mySoldIsEurosOnMyAccount($balance)
     {
-        assertEquals($balance, $this->_account->getBalance());
+
+        PHPUnit_Framework_Assert::assertEquals($balance, $this->_account->getBalance());
     }
 
     /**
@@ -69,7 +73,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function iHaveAErrorMessage($message)
     {
-        assertEquals($message, $this->_lastException->getMessage());
+        PHPUnit_Framework_Assert::assertEquals($message, $this->_lastException->getMessage());
     }
 
     /**
@@ -82,5 +86,27 @@ class FeatureContext implements Context, SnippetAcceptingContext
         } catch (\Exception $e) {
             $this->_lastException = $e;
         }
+    }
+
+    /**
+     * @Given I am logged in as :username
+     */
+    public function iAmLoggedInAs($username)
+    {
+        $this->visit('login.php');
+        $this->fillField('My name', $username);
+        $this->pressButton('Login');
+    }
+
+    /**
+     * @Given I have :arg1 euro
+     */
+    public function iHaveEuro($balance)
+    {
+        $this->visit('/');
+        $this->fillField('New balance', $balance);
+        $this->pressButton('Reset');
+
+
     }
 }
