@@ -10,10 +10,18 @@ default:
                       tags: '@web'
     extensions:
         Behat\MinkExtension:
-            base_url: http://localhost/behat/app
+            base_url: http://127.0.0.1/behat/app
             sessions:
                 default:
-                    goutte: ~
+                    goutte:
+                        guzzle_parameters:
+                            verify: false
+#                            proxy:
+#                                http: ~
+#                                https: ~
+#                                no:
+#                                    - http://localhost
+#                                    - 127.0.0.1
 unit:
     suites:
         default:
