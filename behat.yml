@@ -1,13 +1,10 @@
 default:
     suites:
         default:
-            core_features:
-                context:
-                  - web
-                paths:
-                    - %paths.base%/features/web
-                filters:
-                      tags: '@web'
+            contexts:
+                - WebContext
+            paths:
+                - %paths.base%/features/web
     extensions:
         Behat\MinkExtension:
             base_url: http://127.0.0.1/behat/app
@@ -16,19 +13,11 @@ default:
                     goutte:
                         guzzle_parameters:
                             verify: false
-#                            proxy:
-#                                http: ~
-#                                https: ~
-#                                no:
-#                                    - http://localhost
-#                                    - 127.0.0.1
+                            proxy: ''
 unit:
     suites:
         default:
-            context:
-              - unit
-            core_features:
-                paths:
-                    - %paths.base%/features/unit
-                filters:
-                      tags: '@web'
+            contexts:
+                - UnitContext
+            paths:
+                - %paths.base%/features/unit

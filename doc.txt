@@ -1,2 +1,6 @@
 bin\behat --init
 bin\behat --dry-run --append-snippets
+
+
+bin\behat
+bin\behat -p unit

@@ -15,7 +15,7 @@ require_once __DIR__.'/../../app/Account.php';
 /**
  * Defines application features from the specific context.
  */
-class FeatureContext extends MinkContext implements SnippetAcceptingContext
+class UnitContext extends MinkContext implements SnippetAcceptingContext
 {
 
 
